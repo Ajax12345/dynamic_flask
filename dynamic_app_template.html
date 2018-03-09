@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <input id="term" type="text" value="enter your search" />
+  <button id="hit" type="button" name="">Search</button>
+    <div id="place_for_suggestions"></div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  $('#hit').click(function() {
+    var text = $('#term').val();
+    $.ajax({
+      url: "/suggestions",
+      type: "get",
+      data: {jsdata: text},
+      success: function(response) {
+        $("#place_for_suggestions").html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+  });
+});
+
+</script>
+</html>
