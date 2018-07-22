@@ -1,0 +1,42 @@
+
+
+<html>
+  <body>
+    <div class='my_data'>
+      <h1>header</h1>
+    </div>
+    <button class='get_stuff'>Test</button>
+    <input type='text' class='input'>
+    <button class='update'>Update</button>
+    <div class='new_stuff_here'>
+      <h3>Start: 0</h3>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+
+  var count = 0;
+
+    setInterval(function() { update_stuf(count + 1) }, 1000);
+  $('.get_stuff').click(function() {
+    var text = $('h1').text();
+    alert(text);
+
+  });
+  $('.update').click(function(){
+    var input = $('.input').val();
+    $('.my_data').html('<h1>'+input+'</h1>');
+  });
+
+});
+
+function update_stuf(count){
+  $('.new_stuff_here').append('<h3>Count: '+count.toString()+'</h3>')
+  var names = ['James', 'Joe', 'Lilly', 'Mom', 'Dad', 'Nanie', 'Papa'];
+  $('.my_data').html('<h1>'+names[Math.floor((Math.random() * (names.length-1)) + 0)]+'</h1>');
+}
+</script>
+</html>
